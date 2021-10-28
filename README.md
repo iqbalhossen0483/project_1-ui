@@ -1,22 +1,22 @@
-#Islamia Hospital
- About my website:
-    * Its a website about hospital.
-    * I named this Islamia Hospital.
-    * You can called this another name I mean you will able to rename it.
-    * My website demo link: https://islamia-hospital.web.app/home
-    * This is a fully responsive website.
-    * Its performance is so cool.
+
+ 
+    
 
 
 
 
-# Getting Started with Create React App
+# Islamia Hospital
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## About my website
 
-In the project directory, you can run:
+* Its a website about hospital.
+* I named this Islamia Hospital.
+* You can called this another name I mean you will able to rename it.
+* My website demo link: https://islamia-hospital.web.app/home
+* This is a fully responsive website.
+* Its performance is so cool.
 
 ### `npm start`
 
