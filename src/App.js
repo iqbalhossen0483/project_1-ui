@@ -1,23 +1,52 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AuthProvider from './AuthProvider/AuthProvider';
+import Appointment from './component/Appointment/Appointment';
+import NotFoundPage from './component/Appointment/NotFoundPage/NotFoundPage';
+import ContactUs from './component/ContactUs/ContactUs';
+import Footer from './component/Footer/Footer';
+import Header from './component/Header/Header';
+import Home from './component/Home/Home';
+import LogIn from './component/LogIn/LogIn';
+import PrivateRoute from './component/PrivateRouter/PrivateRoute';
+import ServiceDetails from './component/ServiceDetails/ServiceDetails';
+import SignUp from './component/SignUp/SignUp';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-gray-200">
+      <AuthProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <PrivateRoute path="/appointment">
+              <Appointment />
+            </PrivateRoute>
+            <PrivateRoute path="/service/:id">
+              <ServiceDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/contact-us">
+              <ContactUs />
+            </PrivateRoute>
+            <Route path="/log-in">
+              <LogIn />
+            </Route>
+            <Route path="/sign-up">
+              <SignUp />
+            </Route>
+            <Route path="*">
+              <NotFoundPage />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </div>
   );
 }
