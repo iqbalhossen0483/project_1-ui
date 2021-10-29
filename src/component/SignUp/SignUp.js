@@ -8,6 +8,7 @@ const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const [error, setError] = useState("");
     const { signInWithGoogle, signUpWithEmail, setIsLoad, updatUser } = useAuth();
     const history = useHistory();
     const location = useLocation();
@@ -18,23 +19,30 @@ const SignUp = () => {
     }
 
     const getLname = e => {
-        setName(e.target.value)
+        setName(" " + e.target.value)
     }
     const getEmail = (e) => {
         setEmail(e.target.value)
     }
     const getPassword = (e) => {
-        setPassword(" " + e.target.value)
+        setPassword(e.target.value);
+        if (password < 6) {
+            setError("password should be 6 characters")
+        }
+        else {
+            setError('')
+        }
     }
 
     //redirect user
     const signInGoogle = () => {
         signInWithGoogle()
             .then(result => {
+                setError('')
                 history.push(url || "/home")
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
             .finally(() => {
                 setIsLoad(false)
@@ -44,10 +52,11 @@ const SignUp = () => {
         signUpWithEmail(e, email, password, name)
             .then(result => {
                 updatUser(name)
+                setError('')
                 history.push(url || "/home")
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message);
             })
             .finally(() => {
                 setIsLoad(false)
@@ -98,6 +107,7 @@ const SignUp = () => {
                             required
                         />
                     </div>
+                    <p className="text-red-600 text-center col-span-2">{error}</p>
                     <input
                         className="col-span-2 rounded px-2 py-px w-2/4 block mx-auto my-3 bg-blue-400 text-white font-semibold"
                         type="submit"
@@ -105,6 +115,7 @@ const SignUp = () => {
                     />
                 </form>
             </div>
+
             <div className="mt-3 mb-3">
                 <p className="text-xl text-center font-semibold">Or Sign up with</p>
                 <div onClick={signInGoogle}

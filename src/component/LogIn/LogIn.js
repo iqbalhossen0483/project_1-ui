@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import googleImg from "../../images/google.png"
 import useAuth from '../Hooks/useAuth';
 import { useLocation, useHistory } from 'react-router';
-import { BrowserView } from 'react-device-detect';
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
