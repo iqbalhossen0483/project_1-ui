@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import googleImg from "../../images/google.png"
 import useAuth from '../Hooks/useAuth';
 import { useLocation, useHistory } from 'react-router';
+import { BrowserView } from 'react-device-detect';
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ const LogIn = () => {
             })
     }
     return (
-        <div className="w-1/4 mx-auto bg-white rounded-md py-5 px-3 my-16">
+        <div className="mx-5 bg-white rounded-md py-5 px-3 my-16 overflow-hidden md:w-2/4 md:mx-auto lg:w-4/12 xl:w-1/4">
             <h2 className="text-2xl text-center my-3 font-semibold">Please Log In </h2>
             <form
                 onSubmit={(e) => logInEmail(e, email, password)}

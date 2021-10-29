@@ -5,7 +5,7 @@ import banner from "../../images/banner.png"
 const Banner = () => {
     return (
         <div className="sm:grid grid-cols-2 bg-white sm:pt-10">
-            <div className="pt-10 sm:pt-0 flex justify-center items-center">
+            <div className="pt-10 sm:pt-0 text-center flex justify-center items-center">
                 <div className="lg:leading-10">
                     <h2 className="text-4xl font-semibold">ISLAMIA HOSPITAL</h2>
                     <p className="text-xl">A Leargest Field Of Caregiver</p>
@@ -15,7 +15,7 @@ const Banner = () => {
                     </p>
                     <Link to="/appointment">
                         <button
-                            className="border rounded-md mt-2 sm:mt-6 px-3 py-1 bg-blue-600 text-white font-semibold text-xl">
+                            className="border rounded-md mt-2 md:mt-3 px-3 py-1 bg-blue-600 text-white font-semibold text-xl">
                             take a appointment
                         </button>
                     </Link>

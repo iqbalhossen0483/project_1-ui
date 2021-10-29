@@ -54,9 +54,9 @@ const SignUp = () => {
             })
     }
     return (
-        <div className="w-1/4 mx-auto bg-white py-6 rounded-md my-16">
+        <div className="mx-5 bg-white py-6 rounded-md my-16 overflow-hidden md:w-2/4 md:mx-auto lg:w-4/12 xl:w-1/4">
             <h1 className="text-2xl text-center font-semibold my-3">Please Sign Up</h1>
-            <div className="pt-8 px-4">
+            <div className="pt-8 px-2 md:px-4">
                 <form
                     onSubmit={(e) => signUpEmail(e, email, password, name)}
                     style={{

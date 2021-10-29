@@ -1,11 +1,11 @@
 import React from 'react';
 import useAuth from '../Hooks/useAuth';
 
-const UserInform = () => {
-    const { user, logOut } = useAuth();
+const UserInform = ({ logOut }) => {
+    const { user } = useAuth();
     return (
         <div
-            className="h-60 w-64 absolute top-14 right-8 shadow-md bg-white rounded px-5 py-7 text-center">
+            className="h-60 w-64 absolute top-20 md:top-14 right-8 shadow-md bg-white rounded px-5 py-7 text-center">
             <img className="mx-auto h-20 w-20 rounded-full" src={user.photoURL} alt="" />
             <p className="text-xl mt-2">{user.displayName}</p>
             <p>{user.email}</p>
