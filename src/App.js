@@ -11,6 +11,8 @@ import LogIn from './component/LogIn/LogIn';
 import PrivateRoute from './component/PrivateRouter/PrivateRoute';
 import ServiceDetails from './component/ServiceDetails/ServiceDetails';
 import SignUp from './component/SignUp/SignUp';
+import AddServices from './Deshboard/AddServices';
+import Desboard from './Deshboard/Desboard';
 
 function App() {
   return (
@@ -40,6 +42,12 @@ function App() {
             <Route path="/sign-up">
               <SignUp />
             </Route>
+            <Route path="/desboard">
+              <Desboard></Desboard>
+            </Route>
+            {/* <Route path="/add-service">
+              <Desboard />
+            </Route> */}
             <Route path="*">
               <NotFoundPage />
             </Route>

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 
 const Service = (props) => {
     const history = useHistory();
-    const { id, name, img, sortDescription } = props.service;
+    const { _id, name, img, sortDescription } = props.service;
 
     const goSingleService = id => {
         history.push("/service/" + id)
@@ -19,7 +19,7 @@ const Service = (props) => {
             </div>
             <div className="col-span-2 flex justify-center">
                 <button
-                    onClick={() => goSingleService(id)}
+                    onClick={() => goSingleService(_id)}
                     className="border rounded-md px-4 py-1 bg-blue-600 text-white lg:text-xl font-semibold mt-2">
                     View details
                 </button>

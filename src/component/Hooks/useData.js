@@ -3,12 +3,16 @@ import { useState } from 'react';
 
 const useData = () => {
     const [services, setService] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch("/FackDb.json")
+        fetch("https://enigmatic-wave-77353.herokuapp.com/services")
             .then(res => res.json())
-            .then(data => setService(data));
+            .then(data => {
+                setService(data);
+                setIsLoading(false);
+            });
     }, []);
-    return services;
+    return { services, setService, isLoading };
 };
 
 export default useData;

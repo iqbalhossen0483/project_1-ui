@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SingleService = (props) => {
-    console.log(props.service)
     const { name, img, description } = props.service;
     return (
         <div className="mt-10 px-4 w-3/4 mx-auto">
