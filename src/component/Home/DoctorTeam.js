@@ -4,7 +4,7 @@ import SingleDoctor from './SingleDoctor';
 const DoctorTeam = () => {
     const [doctors, setDoctors] = useState([]);
     useEffect(() => {
-        fetch("https://enigmatic-wave-77353.herokuapp.com/doctors")
+        fetch("https://islamia-hospital.herokuapp.com/doctors")
             .then(res => res.json())
             .then(data => setDoctors(data))
     }, [])

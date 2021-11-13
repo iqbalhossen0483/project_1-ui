@@ -9,7 +9,7 @@ const ServiceDetails = () => {
     const { id } = useParams();
     const [service, setService] = useState({});
     useEffect(() => {
-        fetch(`https://enigmatic-wave-77353.herokuapp.com/services/${id}`)
+        fetch(`https://islamia-hospital.herokuapp.com/services/${id}`)
             .then(res => res.json())
             .then(data => {
                 setService(data);

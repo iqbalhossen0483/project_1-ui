@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 const AddDoctoc = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (doctor) => {
-        fetch("https://enigmatic-wave-77353.herokuapp.com/", {
+        fetch("https://islamia-hospital.herokuapp.com/", {
             method: "post",
             headers: {
                 "content-type": "application/json"

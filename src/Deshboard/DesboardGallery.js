@@ -7,7 +7,7 @@ const DesboardGallery = () => {
     const [gallery, setGallery] = useState([]);
     const history = useHistory();
     useEffect(() => {
-        fetch("https://enigmatic-wave-77353.herokuapp.com/gallery")
+        fetch("https://islamia-hospital.herokuapp.com/gallery")
             .then(res => res.json())
             .then(data => setGallery(data))
     }, []);

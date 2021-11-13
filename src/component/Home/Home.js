@@ -8,7 +8,7 @@ const Home = () => {
     const { services, isLoading } = useData();
     const [gallery, setgallery] = useState([]);
     useEffect(() => {
-        fetch("https://enigmatic-wave-77353.herokuapp.com/gallery")
+        fetch("https://islamia-hospital.herokuapp.com/gallery")
             .then(res => res.json())
             .then(data => setgallery(data))
     }, []);

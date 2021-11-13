@@ -9,7 +9,7 @@ const DesboardService = () => {
     };
 
     const deleteService = (id) => {
-        fetch(`https://enigmatic-wave-77353.herokuapp.com/services/${id}`, {
+        fetch(`https://islamia-hospital.herokuapp.com/services/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

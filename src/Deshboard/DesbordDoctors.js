@@ -7,7 +7,7 @@ const DesbordDoctors = () => {
     const [doctors, setDoctor] = useState([]);
     const history = useHistory();
     useEffect(() => {
-        fetch("https://enigmatic-wave-77353.herokuapp.com/doctors")
+        fetch("https://islamia-hospital.herokuapp.com/doctors")
             .then(res => res.json())
             .then(data => setDoctor(data))
     }, []);

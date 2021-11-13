@@ -6,7 +6,7 @@ const AddServices = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = (service) => {
-        fetch("https://enigmatic-wave-77353.herokuapp.com/services", {
+        fetch("https://islamia-hospital.herokuapp.com/services", {
             method: "post",
             headers: {
                 "content-type": "application/json"

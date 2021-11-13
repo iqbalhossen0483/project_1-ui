@@ -5,7 +5,7 @@ const useData = () => {
     const [services, setService] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch("https://enigmatic-wave-77353.herokuapp.com/services")
+        fetch("https://islamia-hospital.herokuapp.com/services")
             .then(res => res.json())
             .then(data => {
                 setService(data);
