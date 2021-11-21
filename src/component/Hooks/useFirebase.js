@@ -21,7 +21,7 @@ const useFirebase = () => {
         setIsLoad(true)
         e.preventDefault();
         return createUserWithEmailAndPassword(auth, email, password)
-    }
+    };
 
     //user name and extra information
     const updatUser = name => {
@@ -32,7 +32,7 @@ const useFirebase = () => {
             .catch(error => {
                 console.log(error.message)
             })
-    }
+    };
 
     //log in with email
     const logInWithEmail = (e, email, password) => {
@@ -53,7 +53,7 @@ const useFirebase = () => {
             }
             setIsLoad(false)
         })
-    }, []);
+    }, [auth]);
 
     //log out
     const logOut = () => {
