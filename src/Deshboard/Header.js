@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="h-full bg-white text-green-900 text-xl p-5">
+        <div className="h-full text-xl p-5">
             <div>
                 <Link to="/desboard/service" className="hover:underline block">
                     Service

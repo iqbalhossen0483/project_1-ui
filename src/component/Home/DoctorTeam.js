@@ -9,14 +9,14 @@ const DoctorTeam = () => {
             .then(data => setDoctors(data))
     }, [])
     return (
-        <>
+        <div className="px-24">
             <h3 className="text-3xl sm:text-4xl font-bold mt-16 text-center">Our Doctors Team</h3>
             <div className="sm:grid grid-cols-3 gap-5 px-4 mt-5">
                 {
                     doctors.map(doctor => <SingleDoctor doctor={doctor}></SingleDoctor>)
                 }
             </div>
-        </>
+        </div>
     );
 };
 
