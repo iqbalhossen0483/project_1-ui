@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactUs = () => {
     return (
-        <div className="w-96 mx-auto bg-white rounded-md my-24 py-7 px-4">
+        <div className="w-96 mx-auto border bg-white rounded-md my-24 py-7 px-4">
             <form className="flex flex-col">
                 <p>Your topic name:  <input
                     className="border rounded focus:outline-none px-4 py-1 mb-2"

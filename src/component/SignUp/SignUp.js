@@ -1,38 +1,55 @@
 import React from 'react';
 import { useState } from 'react';
+import { useForm } from "react-hook-form";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import googleImg from "../../images/google.png"
 import useAuth from '../Hooks/useAuth';
+import useTailwind from '../Hooks/useTailwind';
 
 const SignUp = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
     const [error, setError] = useState("");
+    const [disable, setDisable] = useState(false);
+    const { register, handleSubmit } = useForm();
+    const { input } = useTailwind();
     const { signInWithGoogle, signUpWithEmail, setIsLoad, updatUser } = useAuth();
     const history = useHistory();
     const location = useLocation();
     const url = location.state?.from.pathname;
 
-    const getFname = e => {
-        setName(e.target.value)
+
+    const signUpEmail = (email, password, name) => {
+        setDisable(true);
+        signUpWithEmail(email, password, name)
+            .then(result => {
+                updatUser(name)
+                setError('')
+                history.push(url || "/home")
+                setDisable(false);
+            })
+            .catch(error => {
+                setError(error.message);
+                setDisable(false);
+            })
+            .finally(() => {
+                setIsLoad(false)
+            })
     }
 
-    const getLname = e => {
-        setName(" " + e.target.value)
-    }
-    const getEmail = (e) => {
-        setEmail(e.target.value)
-    }
-    const getPassword = (e) => {
-        setPassword(e.target.value);
-        if (password < 6) {
-            setError("password should be 6 characters")
+    const onSubmit = data => {
+        let name = "";
+
+        if (data.password !== data.re_password) {
+            return setError("Your password should be match above")
         }
-        else {
-            setError('')
+        if (data.password.length < 6) {
+            return setError("Your password must be 6 character or above")
         }
-    }
+
+        setError("")
+        name = data.firstName + " " + data.lastName;
+        data.name = name;
+        signUpEmail(data.email, data.password, data.name);
+    };
 
     //redirect user
     const signInGoogle = () => {
@@ -48,71 +65,54 @@ const SignUp = () => {
                 setIsLoad(false)
             })
     }
-    const signUpEmail = (e, email, password, name) => {
-        signUpWithEmail(e, email, password, name)
-            .then(result => {
-                updatUser(name)
-                setError('')
-                history.push(url || "/home")
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-            .finally(() => {
-                setIsLoad(false)
-            })
-    }
     return (
-        <div className="mx-5 bg-white py-6 rounded-md my-16 overflow-hidden md:w-2/4 md:mx-auto lg:w-4/12 xl:w-1/4">
+        <div className="mx-5 border bg-white py-6 rounded-md my-16 md:w-2/4 md:mx-auto lg:w-4/12 xl:w-1/4">
             <h1 className="text-2xl text-center font-semibold my-3">Please Sign Up</h1>
-            <div className="pt-8 px-2 md:px-4">
+            <div className="px-2 md:px-4">
                 <form
-                    onSubmit={(e) => signUpEmail(e, email, password, name)}
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        padding: "0 10px"
-                    }}>
-                    <div>
-                        <p>First name:</p>
-                        <p className="mt-2">Last name:</p>
-                        <p className="mt-2">Email:</p>
-                        <p className="mt-3">Password:</p>
-                    </div>
-                    <div>
-                        <input
-                            onBlur={e => getFname(e)}
-                            className="border px-3 rounded focus:outline-none"
-                            type="text"
-                            placeholder="Enter your first name"
-                        />
-                        <input
-                            onBlur={e => getLname(e)}
-                            className="border mt-2 px-3 rounded focus:outline-none"
-                            type="text"
-                            placeholder="Enter your last name"
-                        />
-                        <input
-                            onBlur={(e) => getEmail(e)}
-                            className="border mt-2 px-3 rounded focus:outline-none"
-                            type="email" name="email"
-                            placeholder="Enter your email"
-                            required
-                        />
-                        <input
-                            onBlur={e => getPassword(e)}
-                            className="border mt-2 px-3 rounded focus:outline-none"
-                            type="password" name="password"
-                            placeholder="Enter your password"
-                            required
-                        />
-                    </div>
-                    <p className="text-red-600 text-center col-span-2">{error}</p>
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="grid grid-cols-2 gap-y-2 items-center">
+                    <p>First name:</p>
+
                     <input
-                        className="col-span-2 rounded px-2 py-px w-2/4 block mx-auto my-3 bg-blue-400 text-white font-semibold"
-                        type="submit"
-                        value="sign up"
+                        className={input + " w-full"}
+                        {...register("firstName", { required: true })}
+                        placeholder="Enter your first name"
                     />
+                    <p>Last name:</p>
+                    <input
+                        className={input + " w-full"}
+                        {...register("lastName", { required: true })}
+                        placeholder="Enter your last name"
+                    />
+                    <p>Email:</p>
+                    <input
+                        className={input + " w-full"}
+                        type="email"
+                        {...register("email", { required: true })}
+                        placeholder="Enter your email"
+                    />
+                    <p>Password:</p>
+                    <input
+                        className={input + " w-full"}
+                        type="password"
+                        {...register("password", { required: true })}
+                        placeholder="Give a password"
+                    />
+                    <p>Re-type password:</p>
+                    <input
+                        className={input + " w-full"}
+                        type="password"
+                        {...register("re_password", { required: true })}
+                        placeholder="Re-enter the password"
+                    />
+                    <p className="text-red-600 text-center col-span-2">{error}</p>
+                    <button
+                        disabled={disable}
+                        className="col-span-2 rounded px-2 py-px w-2/4 block mx-auto my-3 bg-primary text-white font-semibold"
+                        type="submit">
+                        sign up
+                    </button>
                 </form>
             </div>
 

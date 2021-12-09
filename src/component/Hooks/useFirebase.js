@@ -17,9 +17,8 @@ const useFirebase = () => {
     }
 
     //sign up with email
-    const signUpWithEmail = (e, email, password, name) => {
+    const signUpWithEmail = (email, password) => {
         setIsLoad(true)
-        e.preventDefault();
         return createUserWithEmailAndPassword(auth, email, password)
     };
 

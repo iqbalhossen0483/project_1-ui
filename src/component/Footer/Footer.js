@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="bg-blue-600 sm:grid grid-cols-3 gap-3 py-4 pb-4 px-6 text-xl">
+        <div className="bg-primary sm:grid grid-cols-3 gap-3 py-4 pb-4 px-6 text-xl mt-10">
             <div>
                 <p>
                     <i className="fas fa-map-marker-alt mr-2"></i>

@@ -21,8 +21,8 @@ const Home = () => {
     return (
         <div>
             <Banner />
-            <div className="mt-12">
-                <h2 className="text-3xl sm:text-5xl font-bold mb-5 text-center">Our Services</h2>
+            <div className="mt-36">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-5 text-center">Our Services</h2>
                 <div className="sm:grid grid-cols-2 gap-4 px-4">
                     {
                         services.map(service => <Service
@@ -33,10 +33,10 @@ const Home = () => {
             </div>
             <DoctorTeam />
             <div className="mt-16 px-4 mb-10">
-                <h2 className="text-3xl sm:text-5xl font-bold mb-5 text-center">Gallery</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold mb-5 text-center">Gallery</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3">
                     {
-                        gallery.map(img => <img src={img.img} alt="" />)
+                        gallery.map(img => <img className="h-full" src={img.img} alt="" />)
                     }
                 </div>
             </div>

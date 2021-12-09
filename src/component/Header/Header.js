@@ -34,9 +34,9 @@ const Header = () => {
         }
     }
     return (
-        <div className="md:h-14 bg-blue-600 md:flex justify-between items-center px-4 relative">
-            <div>
-                <Link to="/home" className="text-2xl font-sans font-bold text-gray-100 cursor-pointer">Islamia Hospital</Link>
+        <div className="md:h-14 md:px-5 flex justify-between items-center relative">
+            <div className="flex justify-start pl-5">
+                <Link to="/home" className="text-2xl font-bold cursor-pointer font-serif">Islamia Hospital</Link>
             </div>
 
             {/* for mobile view */}
@@ -53,36 +53,39 @@ const Header = () => {
 
             {/* for tablet and above */}
             {showMenu &&
-                <div className="text-white text-lg flex flex-col items-start pb-2 font-semibold  md:pb-0 md:flex md:flex-row md:items-center lg:text-xl">
+                <div
+                    className="text-lg flex flex-col items-start pb-2 font-semibold md:pb-0 md:flex-row md:items-center md:justify-end lg:text-xl">
                     <Link
-                        className="hover:underline" to="/home">
+                        className="hover:underline mr-4" to="/home">
                         Home
                     </Link>
-                    <Link
-                        className="md:ml-4 hover:underline" to="/appointment">
-                        Take-an-Appointment
-                    </Link>
+                    <p>About us</p>
+                    <p className="ml-4">Doctors</p>
                     <Link
                         className="md:ml-4 hover:underline" to="/contact-us">
-                        Contact-us
+                        Contact us
                     </Link>
                     {/* log in */}
-                    {!user.email ?
+                    {!user.email &&
                         <Link
                             className="md:ml-4 hover:underline" to="/log-in">
                             Log-In
                         </Link>
-                        :
-                        <button onClick={logOut} className="hover:underline md:ml-4">Log-Out</button>
                     }
                     {/* user img */}
                     {user.email && user.photoURL && < img
                         onClick={showAndHideUder}
                         className="h-10 w-10 rounded-full ml-3 hidden md:block"
                         src={user.photoURL}
-                        alt="" />}
+                        alt="" />
+                    }
 
-                    {user.email && !user.photoURL && <i className="fas fa-user text-2xl text-gray-50 ml-3 hidden md:block"></i>}
+                    {user.email && !user.photoURL &&
+                        <i
+                            onClick={showAndHideUder}
+                            className="fas fa-user text-2xl text-gray-50 ml-3 hidden md:block">
+                        </i>
+                    }
 
                     {!user.email && <Link
                         className="md:ml-4 hover:underline" to="/sign-up">

@@ -8,6 +8,8 @@ import { useLocation, useHistory } from 'react-router';
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [disable, setDisable] = useState(false);
+    const [error, setError] = useState("");
     const { user, signInWithGoogle, logInWithEmail, setIsLoad } = useAuth();
     const location = useLocation();
     const history = useHistory();
@@ -24,29 +26,35 @@ const LogIn = () => {
     const signInGoogle = () => {
         signInWithGoogle()
             .then(result => {
-                history.push(url || "/home")
+                history.push(url || "/home");
+                setError("");
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
             .finally(() => {
                 setIsLoad(false)
             })
     }
     const logInEmail = (e, email, password) => {
+        setDisable(true);
+        console.log("click")
         logInWithEmail(e, email, password)
             .then(result => {
-                history.push(url || "/home")
+                history.push(url || "/home");
+                setError('');
+                setDisable(false);
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message);
+                setDisable(false);
             })
             .finally(() => {
                 setIsLoad(false)
             })
     }
     return (
-        <div className="mx-5 bg-white rounded-md py-5 px-3 my-16 overflow-hidden md:w-2/4 md:mx-auto lg:w-4/12 xl:w-1/4">
+        <div className="mx-5 bg-white border rounded-md py-5 px-3 my-16 overflow-hidden md:w-2/4 md:mx-auto lg:w-4/12">
             <h2 className="text-2xl text-center my-3 font-semibold">Please Log In </h2>
             <form
                 onSubmit={(e) => logInEmail(e, email, password)}
@@ -78,12 +86,16 @@ const LogIn = () => {
                         className="my-0 cursor-pointer">
                         Forget password?</span>}
                 </div>
-                <div className="col-span-2 mt-1">
-                    <input
-                        className="rounded px-2 py-px w-3/4 block mx-auto my-2 bg-blue-400 text-white font-semibold"
-                        type="submit"
-                        value="Log In"
-                    />
+                {error &&
+                    <p className='text-red-500 col-span-2'>{error}</p>
+                }
+                <div className="col-span-2 mt-3 justify-center">
+                    <button
+                        disabled={disable}
+                        className="rounded px-2 py-px w-32 block mx-auto my-2 bg-primary text-white font-semibold"
+                        type="submit">
+                        Log In
+                    </button>
                 </div>
 
             </form>
