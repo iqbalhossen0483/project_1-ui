@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AlartProvider from './component/Hooks/AleartProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AlartProvider>
+      <App />
+    </AlartProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

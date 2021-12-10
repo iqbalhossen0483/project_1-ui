@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 import SingleService from './SingleService';
 
 const ServiceDetails = () => {
@@ -24,7 +26,11 @@ const ServiceDetails = () => {
     }
     return (
         <div>
+            <div className='bg-primary'>
+                <Header />
+            </div>
             {service && <SingleService service={service} />}
+            <Footer />
         </div>
     );
 };

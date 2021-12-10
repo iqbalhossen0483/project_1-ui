@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const DesboardMenu = () => {
     return (
         <div className="h-full text-xl p-5">
             <div>
@@ -19,4 +19,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default DesboardMenu;

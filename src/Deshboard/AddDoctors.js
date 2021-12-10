@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 
-const AddDoctoc = () => {
+const AddDoctors = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (doctor) => {
         fetch("https://islamia-hospital.herokuapp.com/", {
@@ -15,7 +15,7 @@ const AddDoctoc = () => {
             .then(data => {
                 if (data.insertedId) {
                     alert("A doctors added successfully");
-                    reset({ name: "", img: "", department: "", address: "", phone: "" })
+                    reset();
                 }
             })
     };
@@ -58,4 +58,4 @@ const AddDoctoc = () => {
     );
 };
 
-export default AddDoctoc;
+export default AddDoctors;

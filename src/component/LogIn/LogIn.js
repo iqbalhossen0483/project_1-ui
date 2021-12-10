@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import googleImg from "../../images/google.png"
 import useAuth from '../Hooks/useAuth';
-import { useLocation, useHistory } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ const LogIn = () => {
     const [error, setError] = useState("");
     const { user, signInWithGoogle, logInWithEmail, setIsLoad } = useAuth();
     const location = useLocation();
-    const history = useHistory();
+    const navigate = useNavigate();
     const url = location.state?.from.pathname;
 
     const getEmail = e => {
@@ -26,7 +26,7 @@ const LogIn = () => {
     const signInGoogle = () => {
         signInWithGoogle()
             .then(result => {
-                history.push(url || "/home");
+                navigate(url || "/home");
                 setError("");
             })
             .catch(error => {
@@ -41,7 +41,7 @@ const LogIn = () => {
         console.log("click")
         logInWithEmail(e, email, password)
             .then(result => {
-                history.push(url || "/home");
+                navigate(url || "/home");
                 setError('');
                 setDisable(false);
             })

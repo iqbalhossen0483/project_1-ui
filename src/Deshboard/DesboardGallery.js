@@ -1,11 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const DesboardGallery = () => {
     const [gallery, setGallery] = useState([]);
-    const history = useHistory();
+    const navigate = useNavigate();
     useEffect(() => {
         fetch("https://islamia-hospital.herokuapp.com/gallery")
             .then(res => res.json())
@@ -13,7 +13,7 @@ const DesboardGallery = () => {
     }, []);
 
     const goAddGallery = () => {
-        history.push("/add-gallery")
+        navigate("/add-gallery")
     }
     return (
         <div className="col-span-4">

@@ -6,7 +6,7 @@ import UserInform from './UserInform';
 
 const Header = () => {
     const [showInfom, setShowInfom] = useState(false);
-    const [showMenu, setShowMenu] = useState(true);
+    const [showMenu, setShowMenu] = useState(false);
     const { user, logOut } = useAuth();
 
     const showAndHideUder = () => {
@@ -34,33 +34,30 @@ const Header = () => {
         }
     }
     return (
-        <div className="md:h-14 md:px-5 flex justify-between items-center relative">
-            <div className="flex justify-start pl-5">
+        <div className="grid grid-cols-4 md:h-14 md:px-5 md:flex justify-between items-center relative">
+            <div className="col-span-3 flex justify-start pl-5">
                 <Link to="/home" className="text-2xl font-bold cursor-pointer font-serif">Islamia Hospital</Link>
             </div>
 
             {/* for mobile view */}
-            <div className="flex justify-between items-center pb-2 text-2xl md:hidden">
+            <div className="text-right mr-4 text-2xl md:hidden">
                 <i
                     onClick={showMenuOnMobile}
                     className="fas fa-bars"></i>
-                {user.email && user.photoURL && < img
-                    onClick={showAndHideUder}
-                    className="h-10 w-10 rounded-full ml-3"
-                    src={user.photoURL}
-                    alt="" />}
             </div>
-
-            {/* for tablet and above */}
             {showMenu &&
                 <div
-                    className="text-lg flex flex-col items-start pb-2 font-semibold md:pb-0 md:flex-row md:items-center md:justify-end lg:text-xl">
+                    className="bg-gray-100 text-lg col-span-4 flex flex-col pb-2 font-semibold md:pb-0 items-center justify-end  z-50 md:hidden">
                     <Link
                         className="hover:underline mr-4" to="/home">
                         Home
                     </Link>
                     <p>About us</p>
                     <p className="ml-4">Doctors</p>
+                    <Link
+                        className="md:ml-4 hover:underline" to="/my-account">
+                        My Account
+                    </Link>
                     <Link
                         className="md:ml-4 hover:underline" to="/contact-us">
                         Contact us
@@ -93,6 +90,51 @@ const Header = () => {
                     </Link>}
                 </div>
             }
+
+            {/* for tablet and above */}
+            <div
+                className="hidden text-lg md:flex flex-col items-start pb-2 font-semibold md:pb-0 md:flex-row md:items-center md:justify-end lg:text-xl z-50">
+                <Link
+                    className="hover:underline mr-4" to="/home">
+                    Home
+                </Link>
+                <p>About us</p>
+                <p className="ml-4">Doctors</p>
+                <Link
+                    className="md:ml-4 hover:underline" to="/my-account">
+                    My Account
+                </Link>
+                <Link
+                    className="md:ml-4 hover:underline" to="/contact-us">
+                    Contact us
+                </Link>
+                {/* log in */}
+                {!user.email &&
+                    <Link
+                        className="md:ml-4 hover:underline" to="/log-in">
+                        Log-In
+                    </Link>
+                }
+                {/* user img */}
+                {user.email && user.photoURL && < img
+                    onClick={showAndHideUder}
+                    className="h-10 w-10 rounded-full ml-3 hidden md:block"
+                    src={user.photoURL}
+                    alt="" />
+                }
+
+                {user.email && !user.photoURL &&
+                    <i
+                        onClick={showAndHideUder}
+                        className="fas fa-user text-2xl text-gray-50 ml-3 hidden md:block">
+                    </i>
+                }
+
+                {!user.email && <Link
+                    className="md:ml-4 hover:underline" to="/sign-up">
+                    Sign-Up
+                </Link>}
+            </div>
             {showInfom && <UserInform logOut={LogOut} />}
         </div>
     );

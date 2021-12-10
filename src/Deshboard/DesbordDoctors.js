@@ -1,18 +1,18 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const DesbordDoctors = () => {
     const [doctors, setDoctor] = useState([]);
-    const history = useHistory();
+    const navigate = useNavigate();
     useEffect(() => {
         fetch("https://islamia-hospital.herokuapp.com/doctors")
             .then(res => res.json())
             .then(data => setDoctor(data))
     }, []);
     const goAddDoctor = () => {
-        history.push("/add-doctor")
+        navigate("/add-doctor")
     }
     return (
         <div className="col-span-4">

@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const Service = (props) => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const { _id, name, img, sortDescription } = props.service;
 
     const goSingleService = id => {
-        history.push("/service/" + id)
+        navigate("/service/" + id)
     }
     return (
         <div className="mb-5 sm:mb-0 md:grid grid-cols-2 gap-3 bg-white rounded-md border">

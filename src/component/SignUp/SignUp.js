@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import googleImg from "../../images/google.png"
 import useAuth from '../Hooks/useAuth';
 import useTailwind from '../Hooks/useTailwind';
@@ -12,7 +12,7 @@ const SignUp = () => {
     const { register, handleSubmit } = useForm();
     const { input } = useTailwind();
     const { signInWithGoogle, signUpWithEmail, setIsLoad, updatUser } = useAuth();
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation();
     const url = location.state?.from.pathname;
 
@@ -23,7 +23,7 @@ const SignUp = () => {
             .then(result => {
                 updatUser(name)
                 setError('')
-                history.push(url || "/home")
+                navigate(url || "/home")
                 setDisable(false);
             })
             .catch(error => {
@@ -56,7 +56,7 @@ const SignUp = () => {
         signInWithGoogle()
             .then(result => {
                 setError('')
-                history.push(url || "/home")
+                navigate(url || "/home")
             })
             .catch(error => {
                 setError(error.message)

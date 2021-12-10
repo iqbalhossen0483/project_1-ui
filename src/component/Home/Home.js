@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Footer from '../Footer/Footer';
 import useData from '../Hooks/useData';
 import Banner from './Banner';
 import DoctorTeam from './DoctorTeam';
@@ -19,9 +20,9 @@ const Home = () => {
             </div>)
     }
     return (
-        <div>
+        <div className='relative'>
             <Banner />
-            <div className="mt-36">
+            <div className="mt-96 md:mt-36">
                 <h2 className="text-3xl sm:text-4xl font-bold mb-5 text-center">Our Services</h2>
                 <div className="sm:grid grid-cols-2 gap-4 px-4">
                     {
@@ -40,6 +41,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

@@ -1,40 +1,28 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import AddDoctoc from './AddDoctoc';
-import AddGallery from './AddGallery';
-import AddServices from './AddServices';
-import Header from './Header';
-import DesboardService from './DesboardService';
-import DesbordDoctors from './DesbordDoctors';
-import DesboardGallery from './DesboardGallery';
+import { Outlet } from 'react-router-dom';
+import Footer from '../component/Footer/Footer';
+import Header from '../component/Header/Header';
+import DesboardMenu from './DeshboardMenu';
 
 const Desboard = () => {
     return (
-        <div className="grid grid-cols-5 gap-4">
-            <BrowserRouter>
+        <>
+            <div className='bg-primary sticky top-0'>
                 <Header />
-                <Switch>
-                    <Route path="/desboard/service">
-                        <DesboardService></DesboardService>
-                    </Route>
-                    <Route path="/desboard/doctor">
-                        <DesbordDoctors></DesbordDoctors>
-                    </Route>
-                    <Route path="/desboard/gallery">
-                        <DesboardGallery></DesboardGallery>
-                    </Route>
-                    <Route path="/add-service">
-                        <AddServices></AddServices>
-                    </Route>
-                    <Route path="/add-doctor">
-                        <AddDoctoc></AddDoctoc>
-                    </Route>
-                    <Route path="/add-gallery">
-                        <AddGallery></AddGallery>
-                    </Route>
-                </Switch>
-            </BrowserRouter>
-        </div>
+            </div>
+            <div className='bg-blue-500 w-64 h-full fixed'>
+                <DesboardMenu />
+            </div>
+            <div className="grid grid-cols-5">
+                <p></p>
+                <div className='col-span-4 flex flex-col justify-between'>
+                    <div className='p-10'>
+                        <Outlet />
+                    </div>
+                    <Footer />
+                </div>
+            </div>
+        </>
     );
 };
 

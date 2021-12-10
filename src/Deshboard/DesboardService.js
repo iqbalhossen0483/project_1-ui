@@ -1,11 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import useData from "../component/Hooks/useData"
 const DesboardService = () => {
     const { services, setService } = useData();
-    const history = useHistory();
+    const navigate = useNavigate();
     const goAddService = () => {
-        history.push("/add-service")
+        navigate("/add-service")
     };
 
     const deleteService = (id) => {
