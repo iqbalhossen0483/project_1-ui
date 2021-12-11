@@ -5,6 +5,7 @@ import Header from '../component/Header/Header';
 import DesboardMenu from './DeshboardMenu';
 
 const Desboard = () => {
+    const outlet = Outlet();
     return (
         <>
             <div className='bg-primary sticky top-0'>
@@ -15,9 +16,14 @@ const Desboard = () => {
             </div>
             <div className="grid grid-cols-5">
                 <p></p>
-                <div className='col-span-4 flex flex-col justify-between'>
+                <div className='col-span-4 h-screen flex flex-col justify-between'>
                     <div className='p-10'>
-                        <Outlet />
+                        {outlet !== null ?
+                            <Outlet /> :
+                            <div className='flex justify-center items-center text-3xl'>
+                                <p>Deshboard</p>
+                            </div>
+                        }
                     </div>
                     <Footer />
                 </div>

@@ -12,7 +12,7 @@ const DesbordDoctors = () => {
             .then(data => setDoctor(data))
     }, []);
     const goAddDoctor = () => {
-        navigate("/add-doctor")
+        navigate("/desboard/add-doctor")
     }
     return (
         <div className="col-span-4">

@@ -13,7 +13,7 @@ const DesboardGallery = () => {
     }, []);
 
     const goAddGallery = () => {
-        navigate("/add-gallery")
+        navigate("/desboard/add-gallery")
     }
     return (
         <div className="col-span-4">

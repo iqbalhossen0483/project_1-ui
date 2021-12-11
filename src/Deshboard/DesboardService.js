@@ -5,7 +5,7 @@ const DesboardService = () => {
     const { services, setService } = useData();
     const navigate = useNavigate();
     const goAddService = () => {
-        navigate("/add-service")
+        navigate("/desboard/add-service")
     };
 
     const deleteService = (id) => {

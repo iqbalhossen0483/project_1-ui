@@ -23,7 +23,7 @@ const AddDoctors = () => {
     return (
         <div className="col-span-4 flex justify-center">
             <form
-                className="flex flex-col justify-center w-2/5 p-8 bg-white h-auto my-10 rounded"
+                className="flex flex-col justify-center border w-2/5 p-8 bg-white h-auto my-10 rounded"
                 onSubmit={handleSubmit(onSubmit)}>
                 <h3 className="text-2xl text-center">Provide doctors details</h3>
                 <input type="text"
@@ -52,7 +52,9 @@ const AddDoctors = () => {
                     placeholder="Enter number"
                     className="border rounded mt-2 px-3 py-1"
                 />
-                <input type="submit" className="mt-2 rounded" />
+                <div className='flex justify-center'>
+                    <input type="submit" className="mt-2 rounded button w-32" />
+                </div>
             </form>
         </div>
     );
