@@ -11,7 +11,7 @@ const Desboard = () => {
             <div className='bg-primary sticky top-0'>
                 <Header />
             </div>
-            <div className='bg-blue-500 w-64 h-full fixed'>
+            <div className='bg-white shadow-2xl w-64 h-full fixed'>
                 <DesboardMenu />
             </div>
             <div className="grid grid-cols-5">
